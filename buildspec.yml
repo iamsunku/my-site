@@ -3,7 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Building static website (no build step required)"
+      - echo "start lms"
 
 artifacts:
   files:
