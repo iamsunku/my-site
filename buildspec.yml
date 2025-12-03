@@ -1,9 +1,18 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo "Install phase - nothing to install"
+  pre_build:
+    commands:
+      - echo "Pre-build phase - nothing to do"
   build:
     commands:
-      - echo "start lms"
+      - echo "Building static website - no build required"
+  post_build:
+    commands:
+      - echo "Build completed successfully"
 
 artifacts:
   files:
