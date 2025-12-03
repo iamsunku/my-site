@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaCorp - Leading Pharmaceutical Company</title>
+    <style>
+        :root {
+            --primary-color: #005b96; /* Deep Medical Blue */
+            --secondary-color: #6497b1; /* Lighter Blue */
+            --accent-color: #8cc63f; /* Health Green */
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --light-gray: #f4f7f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .top-info span {
+            margin-right: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .enquire-btn {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 91, 150, 0.7), rgba(0, 91, 150, 0.7)), url('https://images.unsplash.com/photo-1584515933487-9bdb0f22434a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 50px 10%;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 10%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: #ddd;
+            background-image: url('https://images.unsplash.com/photo-1563213126-a4273aed2016?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Categories / Specialties */
+        .categories {
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .categories h2 {
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .cat-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .cat-header {
+            height: 150px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+
+        .cat-body {
+            padding: 20px;
+        }
+
+        .cat-body h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Top Brands / Products */
+        .products {
+            background-color: var(--light-gray);
+            padding: 80px 10%;
+        }
+
+        .product-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .product-card {
+            min-width: 280px;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .product-tag {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 2px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: var(--white);
+            padding: 60px 10% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Mobile Nav */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-info">
+            <span>📧 info@pharmacorp.com</span>
+            <span>📞 +91 98765 43210</span>
+        </div>
+        <div class="social-links">
+            <span>Facebook</span> | <span>LinkedIn</span>
+        </div>
+    </div>
+
+    <nav>
+        <div class="logo">PharmaCorp</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Pharma</a></li>
+            <li><a href="#">Cosmetics</a></li>
+            <li><a href="#">Nutraceuticals</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <a href="#" class="enquire-btn">Enquire Now</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Innovating for a Healthier Tomorrow</h1>
+            <p>We are committed to providing high-quality pharmaceutical products to improve the quality of life for millions.</p>
+            <button class="cta-btn">Explore Products</button>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item">
+            <h3>1500+</h3>
+            <p>Products</p>
+        </div>
+        <div class="stat-item">
+            <h3>20+</h3>
+            <p>Years Experience</p>
+        </div>
+        <div class="stat-item">
+            <h3>15</h3>
+            <p>Specialties</p>
+        </div>
+        <div class="stat-item">
+            <h3>2500+</h3>
+            <p>Distributors</p>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="about-text">
+            <h2>Ensuring Quality Healthcare</h2>
+            <p>PharmaCorp is one of the fastest-growing pharmaceutical companies in the region. Our mission is to serve the medical fraternity with the highest standards of quality and innovative healthcare solutions.</p>
+            <br>
+            <p>We specialize in a wide range of therapeutic segments, ensuring that essential medicines reach every corner of the country. Our dedication to excellence has made us a trusted partner for doctors and patients alike.</p>
+            <br>
+            <a href="#" style="color: var(--primary-color); font-weight: bold;">Read More &rarr;</a>
+        </div>
+        <div class="about-image"></div>
+    </section>
+
+    <section class="categories">
+        <h2>Our Segments</h2>
+        <div class="category-grid">
+            <div class="cat-card">
+                <div class="cat-header">💊</div>
+                <div class="cat-body">
+                    <h3>Pharmaceuticals</h3>
+                    <p>Wide range of tablets, capsules, and injectables.</p>
+                </div>
+            </div>
+            <div class="cat-card">
+                <div class="cat-header">🌿</div>
+                <div class="cat-body">
+                    <h3>Ayurvedic</h3>
+                    <p>Traditional herbal formulations for modern life.</p>
+                </div>
+            </div>
+            <div class="cat-card">
+                <div class="cat-header">🧴</div>
+                <div class="cat-body">
+                    <h3>Cosmetics</h3>
+                    <p>Skin care and beauty products backed by science.</p>
+                </div>
+            </div>
+            <div class="cat-card">
+                <div class="cat-header">🧪</div>
+                <div class="cat-body">
+                    <h3>Nutraceuticals</h3>
+                    <p>Supplements for a balanced and healthy lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products">
+        <h2 style="text-align: center; margin-bottom: 40px; color: var(--primary-color);">Featured Products</h2>
+        <div class="product-slider">
+            <div class="product-card">
+                <span class="product-tag">Pain Relief</span>
+                <h3 style="margin-top:10px;">Orthofix Gel</h3>
+                <p style="color:#666; font-size:0.9rem;">Topical Pain Reliever</p>
+                <p style="margin-top: 15px;">Fast action formula for joint pain and stiffness.</p>
+            </div>
+            <div class="product-card">
+                <span class="product-tag">Antibiotic</span>
+                <h3 style="margin-top:10px;">Cef-Active 200</h3>
+                <p style="color:#666; font-size:0.9rem;">Cefixime Tablets</p>
+                <p style="margin-top: 15px;">Effective treatment for bacterial infections.</p>
+            </div>
+            <div class="product-card">
+                <span class="product-tag">Supplements</span>
+                <h3 style="margin-top:10px;">VitaBoost</h3>
+                <p style="color:#666; font-size:0.9rem;">Multivitamin Syrup</p>
+                <p style="margin-top: 15px;">Daily nutritional support for the whole family.</p>
+            </div>
+             <div class="product-card">
+                <span class="product-tag">Cardio</span>
+                <h3 style="margin-top:10px;">CardioSafe</h3>
+                <p style="color:#666; font-size:0.9rem;">Atorvastatin Tablets</p>
+                <p style="margin-top: 15px;">Lipid lowering agent for a healthy heart.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>PharmaCorp Pvt Ltd</h4>
+                <p>Registered Office:<br>
+                123, Health Tech Park,<br>
+                Industrial Area, Mumbai - 400001</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Career</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">General Medicine</a></li>
+                    <li><a href="#">Gynaecology</a></li>
+                    <li><a href="#">Orthopedics</a></li>
+                    <li><a href="#">Pediatrics</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <p>Email: info@pharmacorp.com</p>
+                <p>Phone: +91 98765 43210</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 PharmaCorp Pvt Ltd. All Rights Reserved. | Website for Registered Practitioners only.
+        </div>
+    </footer>
+
+</body>
+</html>
